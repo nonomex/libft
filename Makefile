@@ -44,18 +44,18 @@ OBJS 	= $(SRCS:.c=.o)
 HEADERS	= libft.h
 
 %.o : %.c ${HEADERS} Makefile
-	@${CC} -c ${CFLAGS} ${SRCS}
+	${CC} ${CFLAGS} -c $< -o $@ -I $(HEADERS)
 
 ${NAME}: ${OBJS}
-	@ar rc ${NAME} ${OBJS}
+	ar rc ${NAME} ${OBJS}
 
 all: ${NAME}
 
 clean: 
-	@rm -f ${OBJS}
+	rm -f ${OBJS}
 
 fclean: clean
-	@rm -f ${NAME}
+	rm -f ${NAME}
 
 re: fclean all
 
